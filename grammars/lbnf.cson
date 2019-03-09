@@ -1,0 +1,99 @@
+name: 'LBNF'
+scopeName: 'source.lbnf'
+type: 'tree-sitter'
+parser: 'tree-sitter-lbnf'
+
+fileTypes: [
+  'cf'
+]
+
+comments:
+  start: '--'
+
+folds: [
+  # All `comment` nodes are foldable. By default, the fold starts at
+  # the end of the node's first line, and ends at the beginning
+  # of the node's last line.
+  {
+    type: 'comment'
+  }
+]
+
+scopes:
+  'grammar': 'source.lbnf'
+  'comment': 'comment.block'
+
+  '";"': 'punctuation.terminator.lbnf'
+
+  'integer': 'constant.numeric.integer'
+  'escape_sequence': 'constant.character.escape'
+  'string': 'string.quoted.double'
+  'char': 'string.quoted.single'
+  'ident': 'entity.name.class'
+
+  'def > "comment"': 'keyword.control.comment.lbnf'
+  'def > "internal"': 'keyword.control.internal.lbnf'
+  'def > "token"': 'keyword.control.token.lbnf'
+  'def > "position"': 'keyword.control.position.lbnf'
+  'def > "entrypoints"': 'keyword.control.entrypoints.lbnf'
+  'def > "separator"': 'keyword.control.separator.lbnf'
+  'def > "terminator"': 'keyword.control.terminator.lbnf'
+  'def > "nonempty"': 'keyword.control.nonempty.lbnf'
+  'def > "coercions"': 'keyword.control.coercions.lbnf'
+  'def > "rules"': 'keyword.control.rules.lbnf'
+  'def > "layout"': 'keyword.control.layout.lbnf'
+  'def > "stop"': 'keyword.control.stop.lbnf'
+  'def > "toplevel"': 'keyword.control.toplevel.lbnf'
+
+  'def > "."': 'keyword.operator.label.lbnf'
+  'def > "::="': 'keyword.operator.production.lbnf'
+  'def > "|"': 'punctuation.separator.lbnf'
+  'def > ","': 'punctuation.separator.delimiter'
+
+  'cat > "["': 'punctuation.section.array.begin'
+  'cat > "]"': 'punctuation.section.array.end'
+  '''
+    label_id > "[",
+    prof_item > "[",
+    int_list > "["
+  ''': 'punctuation.section.label.array.begin'
+  '''
+    label_id > "]",
+    prof_item > "]",
+    int_list > "]"
+  ''': 'punctuation.section.label.array.end'
+  '''
+    label_id > "(",
+    prof_item > "("
+  ''': 'punctuation.section.label.group.begin.lbnf'
+  '''
+    label_id > ")",
+    prof_item > ")"
+  ''': 'punctuation.section.label.group.end.lbnf'
+
+  '''
+    prof_item > ",",
+    int_list > ","
+  ''': 'punctuation.separator.label'
+
+  'label_id > ":"': 'constant.language.list.cons.lbnf'
+  'label_id > "_"': 'constant.language.ignore.lbnf'
+  'label_id > ident': 'entity.name.label.lbnf'
+
+  'reg1 > "|"': 'punctuation.separator.lbnf'
+  'reg1 > "-"': 'punctuation.separator.lbnf'
+  'reg3 > "*"': 'keyword.operator.regstar.lbnf'
+  'reg3 > "+"': 'keyword.operator.regplus.lbnf'
+  'reg3 > "?"': 'keyword.operator.reglazy.lbnf'
+  'reg3 > "["': 'punctuation.section.group.start'
+  'reg3 > "]"': 'punctuation.section.group.end'
+  'reg3 > "("': 'punctuation.section.group.begin.lbnf'
+  'reg3 > ")"': 'punctuation.section.group.end.lbnf'
+  'reg3 > "{"': 'punctuation.section.group.begin'
+  'reg3 > "}"': 'punctuation.section.group.end'
+  'reg3 > eps': 'entity.name.eps.lbnf'
+  'reg3 > digit': 'entity.name.digit.lbnf'
+  'reg3 > letter': 'entity.name.letter.lbnf'
+  'reg3 > lower': 'entity.name.lower.lbnf'
+  'reg3 > upper': 'entity.name.upper.lbnf'
+  'reg3 > char': 'entity.name.char.lbnf'

@@ -1,0 +1,14 @@
+{
+  "name": "language-lbnf",
+  "version": "0.0.0",
+  "description": "Atom support for Labelled BNF (LBNF)",
+  "keywords": [
+    "language",
+    "grammar"
+  ],
+  "repository": "https://github.com/atom/language-lbnf",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  }
+}
