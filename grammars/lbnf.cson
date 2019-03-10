@@ -1,5 +1,5 @@
 name: 'LBNF'
-scopeName: 'source.lbnf'
+scopeName: 'lbnf'
 type: 'tree-sitter'
 parser: 'tree-sitter-lbnf'
 

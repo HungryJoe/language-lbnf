@@ -8,10 +8,11 @@
   ],
   "repository": "https://github.com/MortenSchou/language-lbnf",
   "license": "MIT",
+  "bugs": "https://github.com/MortenSchou/language-lbnf/issues",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
   "dependencies": {
-    "tree-sitter-lbnf": "^1.0.0"
+    "tree-sitter-lbnf": "*"
   }
 }
