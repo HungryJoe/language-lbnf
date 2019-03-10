@@ -1,6 +1,6 @@
 {
   "name": "language-lbnf",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Atom support for Labelled BNF (LBNF)",
   "keywords": [
     "language",
